@@ -4,4 +4,4 @@
 .env
 Dockerfile
 fly.toml
-data/match.data
+/data/match.data
