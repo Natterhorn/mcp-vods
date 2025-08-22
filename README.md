@@ -1,7 +1,6 @@
-# KusaGames
+# MCP-VODS
 A base website suite for gaming match database.\
-Designed for 1v1 matches, but you could fork and amend it for any competition.\
-KusaGames in action: http://mbaacc.melty.games/ and http://lumina.melty.games/
+Forked from: https://github.com/EikaMikiku/KusaGames
 
 ## How to run
 
@@ -77,17 +76,3 @@ Once you add provisional videos, set valid token back and note the `Check and ma
 This link doesn't appear if `noApprove` flag is set on the contributor.\
 Click on the link and you will see the provisional video you added.\
 You will then be able to approve it or delete it.
-
-## Logging
-
-There is some logging going on when matches are added/edited/deleted.\
-Log file can be found in `data\log-{{DATE}}.data`. This will automatically create a new log file each month of the year.
-
-There is also report file in `data\reports.data`.\
-This one has info from users on incorrect matches. E.g. if a wrong winner was set, or some character is incorrect.\
-Useful to peek and fix some matches once in a while.
-
-## Backend structure
-
-Just an express website.\
-Underscore.js is used for page templating.

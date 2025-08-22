@@ -1,0 +1,1 @@
+fly -a mcp-vods sftp get /data/match.data testdata.txt
