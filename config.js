@@ -1,8 +1,8 @@
 module.exports = {
 	"port": 3000,
-	"matchData": "data/match.data",
-	"reportsFilename": "data/reports.data",
-	"logFilename": "data/log-DATE.data",
+	"matchData": "/data/match.data",
+	"reportsFilename": "/data/reports.data",
+	"logFilename": "/data/log-DATE.data",
 	"resultsPerPage": 50,
 	"server": "./server/index.js",
 	"contributors": [
