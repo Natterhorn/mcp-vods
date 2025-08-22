@@ -30,9 +30,9 @@ VideoDataManager.prototype.getJSON = function() {
 			let obj = {
 				"id": currentVideoId,
 				"date": split[1],
-				"netplay": split[2],
-				"tags": split[3] ? split[3].split("|") : [],
-				"provIP": split[4] ? split[4] : null,
+				// "netplay": split[2],
+				"tags": split[2] ? split[2].split("|") : [],
+				"provIP": split[3] ? split[3] : null,
 				"matches": [],
 			};
 			output[currentVideoId] = obj;
@@ -72,7 +72,8 @@ VideoDataManager.prototype.saveData = function(json) {
 		}
 
 		let data = json[vid];
-		str += `${vid}\t${data.date}\t${data.netplay}\t${data.tags.map(t => t.trim()).join("|")}\t${data.provIP||""}\n`;
+		// str += `${vid}\t${data.date}\t${data.netplay}\t${data.tags.map(t => t.trim()).join("|")}\t${data.provIP||""}\n`;
+		str += `${vid}\t${data.date}\t${data.tags.map(t => t.trim()).join("|")}\t${data.provIP||""}\n`;
 
 		data.matches.sort((a, b) => {
 			return a.time - b.time;

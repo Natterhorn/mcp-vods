@@ -28,13 +28,13 @@ MatchManger.prototype.validateAddEditVideoForm = function(form) {
 		return "Invalid date.";
 	}
 
-	if(!form.netplay) {
-		return "Set if the video is netplay or locals(offline)";
-	}
+	// if(!form.netplay) {
+	// 	return "Set if the video is netplay or locals(offline)";
+	// }
 
-	if(form.netplay !== "L" && form.netplay !== "N") {
-		return "Invalid netplay value";
-	}
+	// if(form.netplay !== "L" && form.netplay !== "N") {
+	// 	return "Invalid netplay value";
+	// }
 
 	if(!form.tags || typeof form.tags !== "string") {
 		form.tags = [];
@@ -54,12 +54,12 @@ MatchManger.prototype.editVideo = function(form, ip, auth) {
 		log += `VideoID: ${form.vid}\t`;
 		log += `Tags: ${form.tags}\t`;
 		log += `Date: ${form.date}\t`;
-		log += `Netplay: ${form.netplay}.`;
+		// log += `Netplay: ${form.netplay}.`;
 		this.server.logger.log(log, ip, auth);
 
 		videoData.id = form.vid;
 		videoData.date = form.date;
-		videoData.netplay = form.netplay;
+		// videoData.netplay = form.netplay;
 		videoData.tags = form.tags;
 		videoData.provIP = auth ? null : ip;
 		videoData.matches = [];
@@ -90,12 +90,12 @@ MatchManger.prototype.addMatch = function(form, ip, auth) {
 		log += `VideoID: ${form.vid}\t`;
 		log += `Tags: ${form.tags}\t`;
 		log += `Date: ${form.date}\t`;
-		log += `Netplay: ${form.netplay}.`;
+		// log += `Netplay: ${form.netplay}.`;
 		this.server.logger.log(log, ip, auth);
 
 		videoData.id = form.vid;
 		videoData.date = form.date;
-		videoData.netplay = form.netplay;
+		// videoData.netplay = form.netplay;
 		videoData.tags = form.tags;
 		videoData.provIP = auth ? null : ip;
 		videoData.matches = [];
@@ -220,15 +220,15 @@ MatchManger.prototype.editVideoSpecificFields = function(videoData, form, ip, au
 		videoData.tags = form.tags;
 	}
 
-	if(videoData.netplay !== form.netplay) {
-		let log = "Modified video\t";
-		log += `VideoID: ${form.vid}\t`;
-		log += `Netplay From: ${videoData.netplay}\t`;
-		log += `Netplay To: ${form.netplay}.`;
-		this.server.logger.log(log, ip, auth);
+	// if(videoData.netplay !== form.netplay) {
+	// 	let log = "Modified video\t";
+	// 	log += `VideoID: ${form.vid}\t`;
+	// 	log += `Netplay From: ${videoData.netplay}\t`;
+	// 	log += `Netplay To: ${form.netplay}.`;
+	// 	this.server.logger.log(log, ip, auth);
 
-		videoData.netplay = form.netplay;
-	}
+	// 	videoData.netplay = form.netplay;
+	// }
 };
 
 MatchManger.prototype.deleteMatch = function(form, ip, auth) {

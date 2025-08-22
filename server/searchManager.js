@@ -38,12 +38,12 @@ SearchManager.prototype.search = function(data, form) {
 			continue;
 		}
 
-		//Check video netplay
-		if(searchQuery.net === "N" && videoData.netplay === "L") {
-			continue;
-		} else if(searchQuery.net === "L" && videoData.netplay === "N") {
-			continue;
-		}
+		// //Check video netplay
+		// if(searchQuery.net === "N" && videoData.netplay === "L") {
+		// 	continue;
+		// } else if(searchQuery.net === "L" && videoData.netplay === "N") {
+		// 	continue;
+		// }
 
 		for(let i = 0; i < videoData.matches.length; i++) {
 			let match = videoData.matches[i];

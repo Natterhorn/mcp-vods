@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
 	<%=server.templateManager.renderTemplate("head.html", {
-		title: "Kusa.Games: Editor",
+		title: "MCP-VODS: Editor",
 		description: "Editor page to add new matches."
 	})%>
 	<script src="js/editor.js"></script>
@@ -242,9 +242,6 @@
 							</select>
 						</span>
 					</div>
-					<div class="ms-form-group">
-						<button id="ActionButton" data-time="0s" class="ms-btn ms-info ms-fullwidth">Add</button>
-					</div>
 				</div>
 				<div class="col-sm">
 					<div class="ms-form-group">
@@ -254,6 +251,9 @@
 					<div class="ms-form-group" id="CancelEditContainer" hidden>
 						<button id="CancelEditButton" hidden class="ms-btn ms-outline-danger ms-fullwidth">Cancel edit mode</button>
 					</div>
+				</div>
+				<div class="ms-form-group">
+					<button id="ActionButton" data-time="0s" class="ms-btn ms-info ms-fullwidth">Add</button>
 				</div>
 			</div>
 		</div>

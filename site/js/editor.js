@@ -23,7 +23,7 @@ function Editor(videoId) {
 	this.VideoDate = document.getElementById("VideoDate");
 	this.WinnerSelect = document.getElementById("WinnerSelect");
 	this.VideoTags = document.getElementById("VideoTags");
-	this.NetplaySelect = document.getElementById("NetplaySelect");
+	// this.NetplaySelect = document.getElementById("NetplaySelect");
 	this.UpdateVideoDataButton = document.getElementById("UpdateVideoDataButton");
 	this.ActionButton = document.getElementById("ActionButton");
 	this.TimeRefreshButton = document.getElementById("TimeRefreshButton");
@@ -78,7 +78,7 @@ Editor.prototype.setupEvents = function() {
 		let obj = {
 			vid: this.YoutubePlayer.getVideoData().video_id,
 			date: this.VideoDate.value,
-			netplay: this.NetplaySelect.value,
+			// netplay: this.NetplaySelect.value,
 			tags: this.VideoTags.value.trim()
 		};
 
@@ -203,7 +203,7 @@ Editor.prototype.updateMatchList = function(vid) {
 		r.json().then(json => {
 			this.ResultsList.innerHTML = json.html || "";
 			this.VideoDate.value = json.date || "";
-			this.NetplaySelect.value = json.netplay || "";
+			// this.NetplaySelect.value = json.netplay || "";
 			this.VideoTags.value = json.tags ? json.tags.join("|") : "";
 
 			//Go To buttons events
@@ -273,7 +273,7 @@ Editor.prototype.editMatch = function() {
 		vid: this.YoutubePlayer.getVideoData().video_id,
 		date: this.VideoDate.value,
 		time: this.time,
-		netplay: this.NetplaySelect.value,
+		// netplay: this.NetplaySelect.value,
 		orderIndex: this._editingOrderIndex,
 		p1char: this.P1Char.value,
 		p1name: this.P1Name.value.trim(),
@@ -332,7 +332,7 @@ Editor.prototype.addMatch = function() {
 		date: this.VideoDate.value,
 		time: this.time,
 		readableTime: ConvertSecondsToReadable(this.time),
-		netplay: this.NetplaySelect.value,
+		// netplay: this.NetplaySelect.value,
 		p1char: this.P1Char.value,
 		p1name: this.P1Name.value.trim(),
 		p2char: this.P2Char.value,
