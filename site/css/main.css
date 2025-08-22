@@ -255,6 +255,8 @@ a {
 	display: inline-flex;
 	margin: 5px;
 	filter: drop-shadow(0 0 2px black);
+	width: 80px;
+	height: 80px;
 }
 .char-select .char-img {
 	background: #296b9d;
