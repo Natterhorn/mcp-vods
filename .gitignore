@@ -2,4 +2,3 @@ node_modules
 log*.data
 reports.data
 pm2/*.log
-data/match.data
