@@ -24,23 +24,11 @@ module.exports = {
 			"img": "/img/a.png",
 			"token": "mikeiscool"
 		},
-		// {
-		// 	"name": "Someone",
-		// 	"html": "<p>I add and approve matches, because I care!</p>",
-		// 	"img": "/img/someone.png",
-		// 	"token": "somelse1"
-		// },
-		// {
-		// 	"name": "Yabai",
-		// 	"html": "<p>I don't have a token! I was still useful!</p>",
-		// 	"img": "/img/someone.png"
-		// },
-		// {
-		// 	"name": "HoleeFuk",
-		// 	"html": "<p>I have a token, but can't approve!</p>",
-		// 	"img": "/img/someone.png",
-		// 	"token": "hohoho",
-		// 	"noApprove": true
-		// }
+		{
+			"name": "Carl",
+			"html": "",
+			"img": "/img/a.png",
+			"token": "cometocarlcon"
+		},
 	]
 };
