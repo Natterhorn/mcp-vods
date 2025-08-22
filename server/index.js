@@ -214,7 +214,7 @@ Server.prototype.setupRoutes = function() {
 					vid
 				}),
 				date: this.games[vid] && this.games[vid].date,
-				netplay: this.games[vid] && this.games[vid].netplay,
+				// netplay: this.games[vid] && this.games[vid].netplay,
 				tags: this.games[vid] && this.games[vid].tags,
 			}
 			res.send(JSON.stringify(json));
