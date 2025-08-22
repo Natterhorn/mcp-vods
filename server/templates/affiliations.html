@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+	<%=server.templateManager.renderTemplate("head.html", {
+		title: "Kusa.Games: Affiliations page",
+		description: "Information and statistics for MCP affiliations."
+	})%>
+	<script src="js/affiliations.js"></script>
+	<script src="js/tableSort.js"></script>
+	<script src="js/chart.min.js"></script>
+	<body style="overflow-y: scroll;">
+		<%=server.templateManager.renderTemplate("menu.html")%>
+		<div class="container">
+			<div class="h5 ms-content ms-text-center py-4 shadow">
+				Select a character.
+			</div>
+		</div>
+		<div class="container char-select p-2">
+			<div class="char-img-wrap"><img class="char-img" src="/img/chars/aforce.png" data-id="aforce"></div>
+			<div class="char-img-wrap"><img class="char-img" src="/img/chars/asgard.png" data-id="asgard"></div>
+			<div class="char-img-wrap"><img class="char-img" src="/img/chars/avengers.png" data-id="avengers"></div>
+			<div class="char-img-wrap"><img class="char-img" src="/img/chars/blackorder.png" data-id="blackorder"></div>
+			<div class="char-img-wrap"><img class="char-img" src="/img/chars/brotherhood.png" data-id="brotherhood"></div>
+			<div class="char-img-wrap"><img class="char-img" src="/img/chars/cabal.png" data-id="cabal"></div>
+			<div class="char-img-wrap"><img class="char-img" src="/img/chars/convocation.png" data-id="convocation"></div>
+			<div class="char-img-wrap"><img class="char-img" src="/img/chars/criminalsyndicate.png" data-id="criminalsyndicate"></div>
+			<div class="char-img-wrap"><img class="char-img" src="/img/chars/darkdimension.png" data-id="darkdimension"></div>
+			<div class="char-img-wrap"><img class="char-img" src="/img/chars/defenders.png" data-id="defenders"></div>
+			<div class="char-img-wrap"><img class="char-img" src="/img/chars/guardians.png" data-id="guardians"></div>
+			<div class="char-img-wrap"><img class="char-img" src="/img/chars/hellfireclub.png" data-id="hellfireclub"></div>
+			<div class="char-img-wrap"><img class="char-img" src="/img/chars/hydra.png" data-id="hydra"></div>
+			<div class="char-img-wrap"><img class="char-img" src="/img/chars/inhumans.png" data-id="inhumans"></div>
+			<div class="char-img-wrap"><img class="char-img" src="/img/chars/legionlost.png" data-id="legionlost"></div>
+			<div class="char-img-wrap"><img class="char-img" src="/img/chars/midnightsons.png" data-id="midnightsons"></div>
+			<div class="char-img-wrap"><img class="char-img" src="/img/chars/newmutants.png" data-id="newmutants"></div>
+			<div class="char-img-wrap"><img class="char-img" src="/img/chars/sentinels.png" data-id="sentinels"></div>
+			<div class="char-img-wrap"><img class="char-img" src="/img/chars/servantsapocalypse.png" data-id="servantsapocalypse"></div>
+			<div class="char-img-wrap"><img class="char-img" src="/img/chars/shield.png" data-id="shield"></div>
+			<div class="char-img-wrap"><img class="char-img" src="/img/chars/spiderfoes.png" data-id="spiderfoes"></div>
+			<div class="char-img-wrap"><img class="char-img" src="/img/chars/thrallsofdracula.png" data-id="thrallsofdracula"></div>
+			<div class="char-img-wrap"><img class="char-img" src="/img/chars/wakanda.png" data-id="wakanda"></div>
+			<div class="char-img-wrap"><img class="char-img" src="/img/chars/weaponx.png" data-id="weaponx"></div>
+			<div class="char-img-wrap"><img class="char-img" src="/img/chars/webwarriors.png" data-id="webwarriors"></div>
+			<div class="char-img-wrap"><img class="char-img" src="/img/chars/winterguard.png" data-id="winterguard"></div>
+			<div class="char-img-wrap"><img class="char-img" src="/img/chars/xforce.png" data-id="xforce"></div>
+			<div class="char-img-wrap"><img class="char-img" src="/img/chars/xmen.png" data-id="xmen"></div>
+			<div class="char-img-wrap"><img class="char-img" src="/img/chars/zunaffiliated.png" data-id="zunaffiliated"></div>
+		</div>
+		<img id="bg-img" class="bg-img" src="">
+		<div id="char-info-container" class="container char-info" hidden>
+			<div class="row">
+				<div class="col-sm shadow">
+					<h3><a id="char-wiki" href="" target="_blank">Wiki page</a></h3>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm">
+					<table id="char-players" class="sort-table" data-sort="num,text,,num,num,num,num,num">
+						<thead>
+							<tr>
+								<th><a>Rank</a></th>
+								<th><a>Player</a></th>
+								<th class="d-none d-md-table-cell"></th>
+								<th><a>Games</a></th>
+								<th><a>Wins</a></th>
+								<th class="d-none d-sm-table-cell"><a>Losses</a></th>
+								<th class="d-none d-sm-table-cell"><a>Draws</a></th>
+								<th><a>Winrate</a></th>
+							</tr>
+						</thead>
+						<tbody></tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
