@@ -8,6 +8,11 @@ function VideoDataManager(cfg) {
 }
 
 VideoDataManager.prototype.getJSON = function() {
+	// Create the file if it does not exist
+	if (!fs.existsSync(this.filename)) {
+		fs.writeFileSync(this.filename, "");
+	}
+
 	const scanner = new Scanner(this.filename);
 	const output = {};
 
