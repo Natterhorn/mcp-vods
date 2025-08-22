@@ -12,6 +12,18 @@ module.exports = {
 			"img": "/img/a.png",
 			"token": "nateisgreat"
 		},
+		{
+			"name": "Vince",
+			"html": "",
+			"img": "/img/a.png",
+			"token": "vinceisrad"
+		},
+		{
+			"name": "Mike Whalen",
+			"html": "",
+			"img": "/img/a.png",
+			"token": "mikeiscool"
+		},
 		// {
 		// 	"name": "Someone",
 		// 	"html": "<p>I add and approve matches, because I care!</p>",
