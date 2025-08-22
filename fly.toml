@@ -21,3 +21,7 @@ primary_region = 'lax'
   cpu_kind = 'shared'
   cpus = 1
   memory_mb = 1024
+
+[mounts]
+  source = "mcp_vods_volume"
+  destination = "/data"
