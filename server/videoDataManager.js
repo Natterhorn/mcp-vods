@@ -4,6 +4,10 @@ const utils = require("./functions/timeUtils.js");
 
 function VideoDataManager(cfg) {
 	this.filename = cfg.matchData;
+	var environment = process.env.NODE_ENV || 'development';
+	if(environment === 'development') {
+		this.filename = "local_data/match.data";
+	}
 	this.printCloseTimedMatches = false;
 }
 
