@@ -62,6 +62,9 @@ Server.prototype.setupRoutes = function() {
 		if(Object.keys(req.query).length > 0) {
 			searchResult = this.searchManager.search(this.games, req.query);
 		}
+		else {
+			searchResult = this.searchManager.search(this.games, {page: 1});
+		}
 
 		res.send(this.templateManager.renderTemplate("index.html", {
 			search: searchResult

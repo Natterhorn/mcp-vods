@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	p2name.value = url.get("p2name")||"";
 	videoTag.value = url.get("tag")||"";
 	// videoId.value = url.get("vid")||"";
-	
+
 	//Search button
 	document.getElementById("search-button").addEventListener("click", () => {
 		updateFormNames();
