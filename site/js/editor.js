@@ -292,6 +292,7 @@ Editor.prototype.editMatch = function() {
 		if(r.status !== 200) {
 			r.text().then(alert);
 		} else {
+			alert("Match edits saved!");
 			this.updateMatchList();
 		}
 	});
@@ -355,6 +356,7 @@ Editor.prototype.addMatch = function() {
 		if(r.status !== 200) {
 			r.text().then(alert);
 		} else {
+			alert("Match added!");
 			this.updateMatchList();
 		}
 	});

@@ -2,6 +2,11 @@ const fs = require("fs");
 
 function Logger(cfg) {
 	this.logFilename = cfg.logFilename;
+
+	var environment = process.env.NODE_ENV || 'development';
+	if(environment === 'development') {
+		this.logFilename = "local_data/log-DATE.data";
+	}
 }
 
 Logger.prototype.log = function(msg, address, auth) {
