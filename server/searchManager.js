@@ -34,8 +34,19 @@ SearchManager.prototype.search = function(data, form) {
 		if(form.vid && form.vid.length === 11 && videoData.id !== form.vid) {
 			continue;
 		}
-		if(form.tag && !videoData.tags.includes(form.tag)) {
-			continue;
+		//if(form.tag && !videoData.tags.includes(form.tag)) {
+
+		if(form.tag) {
+			let tagFound = false;
+			for(let i = 0; i < videoData.tags.length; i++) {
+				if(videoData.tags[i].toLowerCase().indexOf(form.tag.toLowerCase()) > -1) {
+					tagFound = true;
+					break;
+				}
+			}
+			if(!tagFound) {
+				continue;
+			}
 		}
 
 		// //Check video netplay
