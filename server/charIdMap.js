@@ -109,7 +109,7 @@ module.exports = {
     },
     "servantsapocalypse": {
         "id": "servantsapocalypse",
-        "name": "Servants",
+        "name": "Servants of the Apocalypse",
         "full": "Servants of the Apocalypse",
         "wiki": ""
     },
