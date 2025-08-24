@@ -19,6 +19,12 @@ module.exports = {
 			"token": "vinceisrad"
 		},
 		{
+			"name": "Alex Botts",
+			"html": "",
+			"img": "/img/a.png",
+			"token": "bartholomew"
+		},
+		{
 			"name": "Mike Whalen",
 			"html": "",
 			"img": "/img/a.png",
