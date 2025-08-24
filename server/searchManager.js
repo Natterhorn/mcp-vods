@@ -34,8 +34,8 @@ SearchManager.prototype.search = function(data, form) {
 		if(form.vid && form.vid.length === 11 && videoData.id !== form.vid) {
 			continue;
 		}
-		//if(form.tag && !videoData.tags.includes(form.tag)) {
 
+		//if(form.tag && !videoData.tags.includes(form.tag)) {
 		if(form.tag) {
 			let tagFound = false;
 			for(let i = 0; i < videoData.tags.length; i++) {
@@ -48,13 +48,6 @@ SearchManager.prototype.search = function(data, form) {
 				continue;
 			}
 		}
-
-		// //Check video netplay
-		// if(searchQuery.net === "N" && videoData.netplay === "L") {
-		// 	continue;
-		// } else if(searchQuery.net === "L" && videoData.netplay === "N") {
-		// 	continue;
-		// }
 
 		for(let i = 0; i < videoData.matches.length; i++) {
 			let match = videoData.matches[i];
