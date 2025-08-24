@@ -265,6 +265,11 @@ a {
 		width: 40px;
 		height: 40px;
 	}
+
+	.char-select .char-img {
+		background: #296b9d;
+		clip-path: polygon(0 0, calc(100% - 5px) 0%, 100% 5px, 100% 100%, calc(100% - 5px) 100%, 5px 100%, 0 calc(100% - 5px), 0 0);
+	}
 }
 
 .char-select .char-img {
