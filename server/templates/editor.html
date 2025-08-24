@@ -2,7 +2,7 @@
 <html lang="en" data-theme="dark">
 	<%=server.templateManager.renderTemplate("head.html", {
 		title: "MCP-VODS: Editor",
-		description: "Editor page to add new matches."
+		description: "Editor page to add new games."
 	})%>
 	<script src="js/editor.js"></script>
 	<script defer src="https://www.youtube.com/iframe_api"></script>
@@ -28,7 +28,7 @@
 						<%
 						if(!auth) {
 							print("Your video will be saved as provisional until approved by the team.<br>");
-							print("Ask <a href='/faq'>Nate</a> for token if you plan to frequently add matches.<br>");
+							print("Ask <a href='/faq'>Nate</a> for token if you plan to frequently add games.<br>");
 						} else if(canApprove) {
 							print("<a href='/provisional'>Check and maybe approve some provisional videos?</a><br>");
 						}
@@ -58,35 +58,31 @@
 					<p class="ms-text-center">
 						<h5 class="shadow ms-text-center">Don't let your hard work be discarded!</h5>
 						<br>
-						<h6 class="shadow ms-text-center">Read the information below on how to properly add matches!</h6>
+						<h6 class="shadow ms-text-center">Read the information below on how to properly add games!</h6>
 					</p>
 					<br>
 					How to use:
 					<ol>
 						<li>Load the YouTube video.</li>
-						<li>Populate video details such as date, affiliations, etc.</li>
-						<li>Match start point is when the affiliations are able to move. BE PRECISE to the second. It sucks to wait until the match starts when searching matches.</li>
-						<li>Once you get to the match's start point, you MUST refresh the editor time by clicking the "Refresh time" button. This will set the editor time of when the match starts.</li>
-						<li>Populate the match's details. Player affiliations and names if possible.</li>
-						<li>Since the match start time is saved, you are then free to scroll forward in the match and find the result of that match.</li>
-						<li>Once you know the result, set the winner of the match, and click Add @ time button.</li>
-						<li>Note that when you add a match, the video information is also going to be updated.</li>
-						<li>Use the char+player list on the top left (It will appear once you add an entry with a player name). It's a list of all unique affiliations+player pair. Clicking P1 or P2 will add that player with that affiliation to the respective form. This simplifies adding player names and removes risks of typos.</li>
+						<li>Once you get to the game's start point, you MUST refresh the editor time by clicking the "Refresh time" button. This will set the editor time of when the game starts.</li>
+						<li>Populate the game's details. Player affiliations and names if possible.</li>
+						<li>Since the game start time is saved, you are then free to scroll forward in the game and find the result of that game.</li>
+						<li>Once you know the result, set the winner of the game, and click Add @ time button.</li>
+						<li>Note that when you add a game, the video information is also going to be updated.</li>
 					</ol>
 					<br>
 					Guidance:
 					<ul>
 						<li>Make sure you pick the right affiliations.</li>
 						<li>Only add player names when you are sure.</li>
-						<li>Date of the video is when the match was played (if known). If not known, set it to the video's upload date.</li>
-						<li>Do not include player names or affiliation names in the tags, as those can be specifically searched for.</li>
-						<li>Be careful when using the char+player list. Make sure the affiliation is correct. </li>
-						<li>If still unsure, try pasting video URL that is already in the database. This will show you all matches in that video.</li>
+						<li>Date of the video is when the game was played (if known). If not known, set it to the video's upload date.</li>
+						<li>Do not include player names or affiliations in the tags, as those can be specifically searched for.</li>
+						<li>If still unsure, try pasting video URL that is already in the database. This will show you all games in that video.</li>
 					</ul>
 					<br>
 					Tips:
 					<ul>
-						<li>Use YouTube's seek preview to find when match starts and ends.</li>
+						<li>Use YouTube's seek preview to find when game starts and ends.</li>
 						<li>Best to close YouTube's "More videos" panel in the player. Only need to do this once. It gets in the way.</li>
 						<li><kbd class="">Ctrl + Shift</kbd> shortcut refreshes time. This only works when player is not "focused". Use buttons below the player to not click and focus on the player.</li>
 					</ul>
