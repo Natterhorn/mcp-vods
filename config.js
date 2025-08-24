@@ -22,13 +22,25 @@ module.exports = {
 			"name": "Mike Whalen",
 			"html": "",
 			"img": "/img/a.png",
-			"token": "mikeiscool"
+			"token": "whalensonthemoon"
 		},
 		{
 			"name": "Carl",
 			"html": "",
 			"img": "/img/a.png",
 			"token": "cometocarlcon"
+		},
+		{
+			"name": "Jeremy",
+			"html": "",
+			"img": "/img/a.png",
+			"token": "nobilitea"
+		},
+		{
+			"name": "Zach",
+			"html": "",
+			"img": "/img/a.png",
+			"token": "angelaisbad"
 		},
 	]
 };

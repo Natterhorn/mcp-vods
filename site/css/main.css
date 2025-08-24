@@ -259,6 +259,15 @@ a {
 	height: 80px;
 }
 
+.char-select .char-img {
+	background: #296b9d;
+	clip-path: polygon(0 0, calc(100% - 15px) 0%, 100% 15px, 100% 100%, calc(100% - 15px) 100%, 15px 100%, 0 calc(100% - 15px), 0 0);
+}
+.char-select > .selected, .char-select > .char-img-wrap:hover {
+	filter: drop-shadow(0 0 1px black) drop-shadow(2px -1px 2px #0fe0df) drop-shadow(-2px -1px 2px #0fe0df);
+	cursor: pointer;
+}
+
 @media all and (max-width: 600px) 
 {
 	.char-select .char-img-wrap {
@@ -272,14 +281,6 @@ a {
 	}
 }
 
-.char-select .char-img {
-	background: #296b9d;
-	clip-path: polygon(0 0, calc(100% - 15px) 0%, 100% 15px, 100% 100%, calc(100% - 15px) 100%, 15px 100%, 0 calc(100% - 15px), 0 0);
-}
-.char-select > .selected, .char-select > .char-img-wrap:hover {
-	filter: drop-shadow(0 0 1px black) drop-shadow(2px -1px 2px #0fe0df) drop-shadow(-2px -1px 2px #0fe0df);
-	cursor: pointer;
-}
 .bg-img {
 	position: fixed;
 	z-index: -100;
