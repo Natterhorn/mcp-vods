@@ -122,6 +122,9 @@
 								<input id="videoId" name="vid" placeholder="YouTube video ID">
 							</div>
 						</div> -->
+						<div class="ms-form-group">
+							<b>Show game winner</b> <input type="checkbox" id="highlight_winner" name="highlight_winner"  <%= search.highlight_winner ? 'checked' : '' %> />
+						</div>
 					</div>
 					<div class="row justify-content-center">
 						<div class="col-4">
@@ -170,7 +173,8 @@
 							currentVideo = match.videoData.id; 
 						}
 						print(server.templateManager.renderTemplate("match_row.html", {
-							match
+							match,
+							highlight_winner: search.highlight_winner
 						}));
 					}
 					%>

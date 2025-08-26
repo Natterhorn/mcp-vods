@@ -51,8 +51,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	videoTag.value = url.get("tag")||"";
 	// videoId.value = url.get("vid")||"";
 
-	//Search button
-	document.getElementById("search-button").addEventListener("click", () => {
+	triggerSearch=function(){
 		updateFormNames();
 		let hasValue = updateFormNames();
 		if(!hasValue) {
@@ -60,7 +59,12 @@ document.addEventListener("DOMContentLoaded", () => {
 			page.value = "1";
 		}
 		form.submit();
-	});
+	}
+
+	document.getElementById("highlight_winner").addEventListener("click", triggerSearch);
+	
+	//Search button
+	document.getElementById("search-button").addEventListener("click", triggerSearch);
 
 	//Pagination
 	let pages = document.querySelectorAll("a[data-page]");
