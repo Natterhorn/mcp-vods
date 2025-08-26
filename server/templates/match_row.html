@@ -2,12 +2,12 @@
 	<td class="d-none d-sm-table-cell match-date"><%=match.videoData.date%></td>
 	<td class="matchup">
 		<div>
-			<div class="player-1 <%=match.winner==1||match.winner=="D"?'winner':''%>">
+			<div class="player-1 <%=(highlight_winner && (match.winner==1||match.winner=="D"))?'winner':''%>">
 				<img class="d-sm-img" src="img/chars/<%=match.p1char%>.png">
 				<span><%=match.p1name%></span>
 			</div>
 			<span class="versus"></span>
-			<div class="player-2 <%=match.winner==2||match.winner=="D"?'winner':''%>">
+			<div class="player-2 <%=(highlight_winner && (match.winner==2||match.winner=="D"))?'winner':''%>">
 				<img class="d-sm-img" src="img/chars/<%=match.p2char%>.png">
 				<span><%=match.p2name%></span>
 			</div>
