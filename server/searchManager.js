@@ -12,7 +12,7 @@ function SearchManager(cfg) {
 	this.resultsPerPage = cfg.resultsPerPage;
 };
 
-SearchManager.prototype.search = function(data, form) {
+SearchManager.prototype.search = function (data, form) {
 	let searchQuery = {
 		page: parseInt(form.page) || DEFAULT_SEARCH.page,
 		p1char: form.p1char || DEFAULT_SEARCH.p1char,
@@ -25,34 +25,34 @@ SearchManager.prototype.search = function(data, form) {
 	};
 	let foundMatches = [];
 
-	for(let videoId in data) {
+	for (let videoId in data) {
 		let videoData = data[videoId];
 
-		if(videoData.provIP) {
+		if (videoData.provIP) {
 			continue;
 		}
 
-		if(form.vid && form.vid.length === 11 && videoData.id !== form.vid) {
+		if (form.vid && form.vid.length === 11 && videoData.id !== form.vid) {
 			continue;
 		}
 
 		//if(form.tag && !videoData.tags.includes(form.tag)) {
-		if(form.tag) {
+		if (form.tag) {
 			let tagFound = false;
-			for(let i = 0; i < videoData.tags.length; i++) {
-				if(videoData.tags[i].toLowerCase().indexOf(form.tag.toLowerCase()) > -1) {
+			for (let i = 0; i < videoData.tags.length; i++) {
+				if (videoData.tags[i].toLowerCase().indexOf(form.tag.toLowerCase()) > -1) {
 					tagFound = true;
 					break;
 				}
 			}
-			if(!tagFound) {
+			if (!tagFound) {
 				continue;
 			}
 		}
 
-		for(let i = 0; i < videoData.matches.length; i++) {
+		for (let i = 0; i < videoData.matches.length; i++) {
 			let match = videoData.matches[i];
-			if(matchTest(match, searchQuery)) {
+			if (matchTest(match, searchQuery)) {
 				foundMatches.push(match);
 			}
 		}
@@ -66,12 +66,12 @@ SearchManager.prototype.search = function(data, form) {
 		let diff = bd - ad;
 
 		//Multiple videos can be in the same date, consistently sort them by id
-		if(diff === 0) {
+		if (diff === 0) {
 			diff = b.videoData.id.localeCompare(a.videoData.id);
 		}
 
 		//Multiple matches can be in the video, sort them by their order
-		if(diff === 0) {
+		if (diff === 0) {
 			diff = a.orderIndex - b.orderIndex;
 		}
 
@@ -92,48 +92,48 @@ function matchTest(mData, sq) {
 	let p1set = sq.p1char.length || sq.p1name.length;
 	let p2set = sq.p2char.length || sq.p2name.length;
 
-	if(p1set) {
-		if(p2set) {
+	if (p1set) {
+		if (p2set) {
 			let p1 = playerMatches(mData.p1char, mData.p1name, sq.p1char, sq.p1name);
 			let p2 = playerMatches(mData.p2char, mData.p2name, sq.p2char, sq.p2name);
 			//Swapped:
 			let p1asp2 = playerMatches(mData.p2char, mData.p2name, sq.p1char, sq.p1name);
 			let p2asp1 = playerMatches(mData.p1char, mData.p1name, sq.p2char, sq.p2name);
 
-			if(p1 && p2) {
+			if (p1 && p2) {
 				//Normal match
 				let p1Char = sq.p1char + sq.p1name;
 				let p2Char = sq.p2char + sq.p2name;
-				if(p1Char !== p2Char) {
+				if (p1Char !== p2Char) {
 					//Characters are different, so sq.winner is important
-					if(sq.winner === "1" && mData.winner !== "1") {
+					if (sq.winner === "1" && mData.winner !== "1") {
 						//Only p1 winner allowed, no p2 or draw
 						return false;
-					} else if(sq.winner === "2" && mData.winner !== "2") {
+					} else if (sq.winner === "2" && mData.winner !== "2") {
 						//Only p2 winner allowed, no p1 or draw
 						return false;
 					}
 				}
 				//Sides don't matter for draws
-				if(sq.winner === "D" && mData.winner !== "D") {
+				if (sq.winner === "D" && mData.winner !== "D") {
 					return false;
 				}
-			} else if(p1asp2 && p2asp1) {
+			} else if (p1asp2 && p2asp1) {
 				//Swapped match
 				let p1Char = sq.p1char + sq.p1name;
 				let p2Char = sq.p2char + sq.p2name;
-				if(p1Char !== p2Char) {
+				if (p1Char !== p2Char) {
 					//Characters are different, so sq.winner is important
-					if(sq.winner === "1" && mData.winner !== "2") {
+					if (sq.winner === "1" && mData.winner !== "2") {
 						//We are searching for p1 winner, but in reality we want p2 to be a winner
 						return false;
-					} else if(sq.winner === "2" && mData.winner !== "1") {
+					} else if (sq.winner === "2" && mData.winner !== "1") {
 						//We are searching for p2 winner, but in reality we want p1 to be a winner
 						return false;
 					}
 				}
 				//Sides don't matter for draws
-				if(sq.winner === "D" && mData.winner !== "D") {
+				if (sq.winner === "D" && mData.winner !== "D") {
 					return false;
 				}
 			} else {
@@ -144,27 +144,27 @@ function matchTest(mData, sq) {
 			//Only p1 search
 			let p1 = playerMatches(mData.p1char, mData.p1name, sq.p1char, sq.p1name);
 			let p1asp2 = playerMatches(mData.p2char, mData.p2name, sq.p1char, sq.p1name);
-			if(p1) {
+			if (p1) {
 				//Winner check
-				if(sq.winner === "1" && mData.winner !== "1") {
+				if (sq.winner === "1" && mData.winner !== "1") {
 					//Only p1 winner allowed, no p2 or draw
 					return false;
-				} else if(sq.winner === "2" && mData.winner !== "2") {
+				} else if (sq.winner === "2" && mData.winner !== "2") {
 					//Only p2 winner allowed, no p1 or draw
 					return false;
-				} else if(sq.winner === "D" && mData.winner !== "D") {
+				} else if (sq.winner === "D" && mData.winner !== "D") {
 					//Sides don't matter for draws
 					return false;
 				}
-			} else if(p1asp2) {
+			} else if (p1asp2) {
 				//Winner check reversed
-				if(sq.winner === "1" && mData.winner !== "2") {
+				if (sq.winner === "1" && mData.winner !== "2") {
 					//We are searching for p1 winner, but in reality we want p2 to be a winner
 					return false;
-				} else if(sq.winner === "2" && mData.winner !== "1") {
+				} else if (sq.winner === "2" && mData.winner !== "1") {
 					//We are searching for p2 winner, but in reality we want p1 to be a winner
 					return false;
-				} else if(sq.winner === "D" && mData.winner !== "D") {
+				} else if (sq.winner === "D" && mData.winner !== "D") {
 					//Sides don't matter for draws
 					return false;
 				}
@@ -173,32 +173,32 @@ function matchTest(mData, sq) {
 				return false;
 			}
 		}
-	} else if(p2set) {
+	} else if (p2set) {
 		//Reverse search
 		//Only p2 search
 		let p2 = playerMatches(mData.p2char, mData.p2name, sq.p2char, sq.p2name);
 		let p2asp1 = playerMatches(mData.p1char, mData.p1name, sq.p2char, sq.p2name);
-		if(p2) {
+		if (p2) {
 			//Winner check
-			if(sq.winner === "1" && mData.winner !== "1") {
+			if (sq.winner === "1" && mData.winner !== "1") {
 				//Only p1 winner allowed, no p2 or draw
 				return false;
-			} else if(sq.winner === "2" && mData.winner !== "2") {
+			} else if (sq.winner === "2" && mData.winner !== "2") {
 				//Only p2 winner allowed, no p1 or draw
 				return false;
-			} else if(sq.winner === "D" && mData.winner !== "D") {
+			} else if (sq.winner === "D" && mData.winner !== "D") {
 				//Sides don't matter for draws
 				return false;
 			}
-		} else if(p2asp1) {
+		} else if (p2asp1) {
 			//Winner check reversed
-			if(sq.winner === "1" && mData.winner !== "2") {
+			if (sq.winner === "1" && mData.winner !== "2") {
 				//We are searching for p1 winner, but in reality we want p2 to be a winner
 				return false;
-			} else if(sq.winner === "2" && mData.winner !== "1") {
+			} else if (sq.winner === "2" && mData.winner !== "1") {
 				//We are searching for p2 winner, but in reality we want p1 to be a winner
 				return false;
-			} else if(sq.winner === "D" && mData.winner !== "D") {
+			} else if (sq.winner === "D" && mData.winner !== "D") {
 				//Sides don't matter for draws
 				return false;
 			}
@@ -208,12 +208,12 @@ function matchTest(mData, sq) {
 		}
 	} else {
 		//Chars are not set, sides don't matter, but draws do
-		if(sq.winner === "D" && mData.winner !== "D") {
+		if (sq.winner === "D" && mData.winner !== "D") {
 			return false;
 		}
 		//Also if side is picked no draws are allows
-		if(sq.winner === "1" || sq.winner === "2") {
-			if(mData.winner === "D") {
+		if (sq.winner === "1" || sq.winner === "2") {
+			if (mData.winner === "D") {
 				return false;
 			}
 		}
@@ -224,14 +224,14 @@ function matchTest(mData, sq) {
 
 function playerMatches(mChar, mName, sqChar, sqName) {
 	//Player character check
-	if(sqChar.length > 0) {
-		if(sqChar !== mChar) {
+	if (sqChar.length > 0) {
+		if (sqChar !== mChar) {
 			return false;
 		}
 	}
 	//Player name check
-	if(sqName.length > 0) {
-		if(mName.toLowerCase() !== sqName.toLowerCase()) {
+	if (sqName.length > 0) {
+		if (mName.toLowerCase() !== sqName.toLowerCase()) {
 			return false;
 		}
 	}
