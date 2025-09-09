@@ -1,4 +1,4 @@
-fly -a mcp-vods sftp get /data/match.data testdata.txt
+fly -a mcp-vods sftp get /data/match.data gooddata.txt
 
 fly -a mcp-vods sftp get /data/report.data reportdata.txt
 
