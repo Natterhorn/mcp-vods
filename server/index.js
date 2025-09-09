@@ -21,20 +21,20 @@ function Server(cfg, app) {
 	this.setupRoutes();
 }
 
-Server.prototype.getRandomCharId = function() {
+Server.prototype.getRandomCharId = function () {
 	let chars = Object.values(this.charMap);
 	return chars[Math.floor(Math.random() * chars.length)].id;
 };
 
-Server.prototype.getRandomPortrait = function() {
+Server.prototype.getRandomPortrait = function () {
 	return "img/chars/" + this.getRandomCharId() + ".png";
 };
 
-Server.prototype.authCheck = function(req) {
-	if(!req.cookies.token) return false;
+Server.prototype.authCheck = function (req) {
+	if (!req.cookies.token) return false;
 
-	for(let user of this.cfg.contributors) {
-		if(user.token && user.token === req.cookies.token) {
+	for (let user of this.cfg.contributors) {
+		if (user.token && user.token === req.cookies.token) {
 			return user.name;
 		}
 	}
@@ -42,12 +42,12 @@ Server.prototype.authCheck = function(req) {
 	return false;
 };
 
-Server.prototype.approveCheck = function(auth, req) {
-	if(!auth) return false;
-	if(!req.cookies.token) return false;
+Server.prototype.approveCheck = function (auth, req) {
+	if (!auth) return false;
+	if (!req.cookies.token) return false;
 
-	for(let user of this.cfg.contributors) {
-		if(user.token && user.token === req.cookies.token) {
+	for (let user of this.cfg.contributors) {
+		if (user.token && user.token === req.cookies.token) {
 			return !user.noApprove;
 		}
 	}
@@ -55,15 +55,15 @@ Server.prototype.approveCheck = function(auth, req) {
 	return false;
 };
 
-Server.prototype.setupRoutes = function() {
+Server.prototype.setupRoutes = function () {
 	this.app.get("/", (req, res) => {
 		let searchResult = null;
-		
-		if(Object.keys(req.query).length > 0) {
+
+		if (Object.keys(req.query).length > 0) {
 			searchResult = this.searchManager.search(this.games, req.query);
 		}
 		else {
-			searchResult = this.searchManager.search(this.games, {page: 1});
+			searchResult = this.searchManager.search(this.games, { page: 1 });
 		}
 
 		res.send(this.templateManager.renderTemplate("index.html", {
@@ -78,13 +78,13 @@ Server.prototype.setupRoutes = function() {
 	this.app.get("/statistics", (req, res) => {
 		let type = "all-players";
 
-		if(req.query.chars) {
+		if (req.query.chars) {
 			type = "chars";
 		}
-		if(req.query.player) {
+		if (req.query.player) {
 			type = "player";
 		}
-		if(req.query.character) {
+		if (req.query.character) {
 			type = "matchup";
 		}
 
@@ -113,7 +113,7 @@ Server.prototype.setupRoutes = function() {
 
 	this.app.get("/provisional", (req, res) => {
 		let auth = this.authCheck(req);
-		if(!auth || !this.approveCheck(auth, req)) {
+		if (!auth || !this.approveCheck(auth, req)) {
 			res.status(400).send("No!");
 		}
 		res.send(this.templateManager.renderTemplate("provisional.html"));
@@ -121,14 +121,14 @@ Server.prototype.setupRoutes = function() {
 
 	this.app.post("/approveVideo", (req, res) => {
 		let auth = this.authCheck(req);
-		if(!auth || !this.approveCheck(auth, req)) {
+		if (!auth || !this.approveCheck(auth, req)) {
 			res.status(400).send("No!");
 		}
 		let ip = req.connection.remoteAddress;
 
-		if(req.body && req.body.vid) {
+		if (req.body && req.body.vid) {
 			let videoData = this.games[req.body.vid];
-			if(videoData) {
+			if (videoData) {
 				videoData.provIP = null;
 				this.videoDataManager.saveData(this.games);
 				this.logger.log("Approved provisional video: " + req.body.vid, ip, auth);
@@ -143,14 +143,14 @@ Server.prototype.setupRoutes = function() {
 
 	this.app.post("/deleteProvVideo", (req, res) => {
 		let auth = this.authCheck(req);
-		if(!auth || !this.approveCheck(auth, req)) {
+		if (!auth || !this.approveCheck(auth, req)) {
 			res.status(400).send("No!");
 		}
 		let ip = req.connection.remoteAddress;
 
-		if(req.body && req.body.vid) {
+		if (req.body && req.body.vid) {
 			let videoData = this.games[req.body.vid];
-			if(videoData && videoData.provIP) {
+			if (videoData && videoData.provIP) {
 				delete this.games[req.body.vid];
 				this.videoDataManager.saveData(this.games);
 				this.logger.log("Deleted provisional video: " + req.body.vid, ip, auth);
@@ -166,7 +166,7 @@ Server.prototype.setupRoutes = function() {
 	this.app.post("/addMatch", (req, res) => {
 		let ip = req.connection.remoteAddress;
 		let error = this.matchManager.addMatch(req.body, ip, this.authCheck(req));
-		if(error) {
+		if (error) {
 			res.status(400).send(error);
 		} else {
 			this.videoDataManager.saveData(this.games);
@@ -177,7 +177,7 @@ Server.prototype.setupRoutes = function() {
 	this.app.put("/editMatch", (req, res) => {
 		let ip = req.connection.remoteAddress;
 		let error = this.matchManager.editMatch(req.body, ip, this.authCheck(req));
-		if(error) {
+		if (error) {
 			res.status(400).send(error);
 		} else {
 			this.videoDataManager.saveData(this.games);
@@ -188,7 +188,7 @@ Server.prototype.setupRoutes = function() {
 	this.app.put("/editVideo", (req, res) => {
 		let ip = req.connection.remoteAddress;
 		let error = this.matchManager.editVideo(req.body, ip, this.authCheck(req));
-		if(error) {
+		if (error) {
 			res.status(400).send(error);
 		} else {
 			this.videoDataManager.saveData(this.games);
@@ -199,7 +199,7 @@ Server.prototype.setupRoutes = function() {
 	this.app.delete("/deleteMatch", (req, res) => {
 		let ip = req.connection.remoteAddress;
 		let error = this.matchManager.deleteMatch(req.body, ip, this.authCheck(req));
-		if(error) {
+		if (error) {
 			res.status(400).send(error);
 		} else {
 			this.videoDataManager.saveData(this.games);
@@ -209,7 +209,7 @@ Server.prototype.setupRoutes = function() {
 
 	this.app.get("/videoMatches", (req, res) => {
 		let vid = req.query.vid;
-		if(!vid) {
+		if (!vid) {
 			res.sendStatus(400);
 		} else {
 			let json = {
@@ -229,12 +229,12 @@ Server.prototype.setupRoutes = function() {
 	});
 
 	this.app.post("/report", (req, res) => {
-		if(req.body && req.body.vid) {
+		if (req.body && req.body.vid) {
 			let line = "";
 			line += "Video: " + (req.body.vid).padEnd(15);
-			line += "Order: " + (req.body.idx||"???").padEnd(6);
-			line += "Time: " + (req.body.time||"???").padEnd(9);
-			line += "Reason: " + (req.body.reason||"???");
+			line += "Order: " + (req.body.idx || "???").padEnd(6);
+			line += "Time: " + (req.body.time || "???").padEnd(9);
+			line += "Reason: " + (req.body.reason || "???");
 			line += " IP: " + req.connection.remoteAddress;
 
 			fs.appendFileSync(this.cfg.reportsFilename, line + "\n");
