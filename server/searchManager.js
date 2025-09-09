@@ -20,7 +20,8 @@ SearchManager.prototype.search = function(data, form) {
 		p2char: form.p2char || DEFAULT_SEARCH.p2char,
 		p2name: form.p2name || DEFAULT_SEARCH.p2name,
 		winner: form.winner || DEFAULT_SEARCH.winner,
-		net: form.net || DEFAULT_SEARCH.net
+		net: form.net || DEFAULT_SEARCH.net,
+		highlight_winner: form.highlight_winner || false,
 	};
 	let foundMatches = [];
 
@@ -82,7 +83,8 @@ SearchManager.prototype.search = function(data, form) {
 	return {
 		"page": searchQuery.page,
 		"total": foundMatches.length,
-		"matches": foundMatches.splice(startIdx, this.resultsPerPage)
+		"matches": foundMatches.splice(startIdx, this.resultsPerPage),
+		"highlight_winner": searchQuery.highlight_winner,
 	};
 };
 
