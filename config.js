@@ -60,5 +60,17 @@ module.exports = {
 			"img": "/img/a.png",
 			"token": "thesmallestsnail"
 		},
+		{
+			"name": "Vodkablitz",
+			"html": "",
+			"img": "/img/a.png",
+			"token": "cyclopswasright"
+		},
+		{
+			"name": "Schmid",
+			"html": "",
+			"img": "/img/a.png",
+			"token": "schmidnight"
+		},
 	]
 };
