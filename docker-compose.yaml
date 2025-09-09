@@ -1,0 +1,7 @@
+services:
+  mcp-vods:
+    build: .
+    volumes:
+      - ${DATA_FILE:-./local_data/match.data}:/data/match.data
+    ports:
+      - "3000:3000"
