@@ -88,11 +88,17 @@ module.exports = {
         "name": "Legion",
         "full": "Legion of the Lost",
         "wiki": ""
-    },
+    },    
     "midnightsons": {
         "id": "midnightsons",
         "name": "Midnight Sons",
         "full": "Midnight Sons",
+        "wiki": ""
+    },
+    "mightyavengers": {
+        "id": "mightyavengers",
+        "name": "Mighty Avengers",
+        "full": "Mighty Avengers",
         "wiki": ""
     },
     "newmutants": {
