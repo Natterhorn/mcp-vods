@@ -115,8 +115,29 @@ Server.prototype.setupRoutes = function () {
 		let auth = this.authCheck(req);
 		if (!auth || !this.approveCheck(auth, req)) {
 			res.status(400).send("No!");
+			return;
 		}
-		res.send(this.templateManager.renderTemplate("provisional.html"));
+		res.send(this.templateManager.renderTemplate("provisional.html", { auth }));
+	});
+
+	this.app.get("/downloadMatchData", (req, res) => {
+		let auth = this.authCheck(req);
+		if (auth !== "Nate") {
+			res.status(400).send("No!");
+			return;
+		}
+
+		let filename = this.cfg.matchData;
+		let environment = process.env.NODE_ENV || "development";
+		if (environment === "development") {
+			filename = "local_data/match.data";
+		}
+
+		res.download(filename, "match.data", (err) => {
+			if (err) {
+				res.status(500).send("Could not download match data.");
+			}
+		});
 	});
 
 	this.app.post("/approveVideo", (req, res) => {
