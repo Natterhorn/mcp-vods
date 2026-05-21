@@ -78,5 +78,11 @@ module.exports = {
 			"img": "/img/a.png",
 			"token": "doomiscoming"
 		},
+		{
+			"name": "Seth",
+			"html": "",
+			"img": "/img/a.png",
+			"token": "galaxyhussars"
+		},
 	]
 };
